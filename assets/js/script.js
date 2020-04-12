@@ -7,7 +7,7 @@ var loadTasks = function() {
     } else {
         $.each(tasks, function() {
 
-        })
+        });
     }
 
 
