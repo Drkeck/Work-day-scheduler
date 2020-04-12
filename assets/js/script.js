@@ -1,13 +1,30 @@
-tasks = [];
+tasks = {};
 
-$(".row").on("click", ".btn-primary", function() {
+var loadTasks = function() {
+    Tasks = JSON.parse(localStorage.getItem("work scheduler"));
+    if(!Tasks) {
+        tasks = {}
+    } else {
+        $.each(tasks, function() {
+
+        })
+    }
+
+
+}
+
+
+
+
+$(".btn-primary").on("click", function() {
     debugger
-    var id = $(this, ".row").closest(".times").attr("id")
-    var text = $(this, ".text").closest("p").text();
+    var id = $(this).attr('id');
+    var text = $(this).siblings("div").children("p").text();
 
-    console.log(id);
-    console.log(text);
-})
+    console.log(text)
+    tasks[id] = text;
+    localStorage.setItem("work scheduler", JSON.stringify(tasks));
+});
 
 $(".text").on("click", ".text-p", function() {
     var text = $(this,".text-p").text().trim();
@@ -28,3 +45,5 @@ $(".text").on("blur", "textarea",  function() {
     var taskP = $("<p>").addClass("text-p").text(text);
     $(this, ".text-p").replaceWith(taskP)
 });
+
+loadTasks();
