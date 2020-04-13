@@ -11,14 +11,14 @@ setInterval(function(){
         if (timeChecker > taskTime) {
             $('#' + i).parents(".row").removeClass('bg-success');
             $('#' + i).parents(".row").removeClass('bg-danger');
-            $('#' + i).parents(".row").addClass('bg-dark');
+            $('#' + i).parents(".row").addClass('bg-secondary');
         } else if (timeChecker === taskTime) {
-            $('#' + i).parents(".row").removeClass('bg-dark');
+            $('#' + i).parents(".row").removeClass('bg-secondary');
             $('#' + i).parents(".row").removeClass('bg-success');
             $('#' + i).parents(".row").addClass('bg-danger');
         } else {
             $('#' + i).parents(".row").removeClass('bg-danger');
-            $('#' + i).parents(".row").removeClass('.bg-dark');
+            $('#' + i).parents(".row").removeClass('.bg-secondary');
             $('#' + i).parents(".row").addClass('bg-success');
         }
     }
