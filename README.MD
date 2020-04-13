@@ -1,4 +1,4 @@
-# (Your Work Day Scheduler)[https://drkeck.github.io/Work-day-scheduler/]
+# [Your Work Day Scheduler](https://drkeck.github.io/Work-day-scheduler/)
 this scheduler should help you iron out your work day by being able to add tasks, save task, dynamically track time, and show you when a tasks deadline might be coming up.
 
 ### notes
@@ -8,4 +8,4 @@ libreties with the pages design.
 
 ### the page:
 
-![image of website] (./assets/img/1.gif)
+![image of website](./assets/img/1.gif)
