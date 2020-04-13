@@ -1,26 +1,55 @@
 tasks = {};
 
-var loadTasks = function() {
-    Tasks = JSON.parse(localStorage.getItem("work scheduler"));
-    if(!Tasks) {
-        tasks = {}
-    } else {
-        $.each(tasks, function() {
-
-        });
+setInterval(function(){
+    var timeChecker = parseInt(moment().format('H'));
+    var currentTime = moment().format('LTS');
+    var currentDate = moment().format('MMMM Do');
+    var combinedTime = currentDate + " " + currentTime;
+    $('#currentDay').text(combinedTime);
+    for (i = 9; i < 18; i++) {
+        var taskTime = i;
+        if (timeChecker > taskTime) {
+            $('#' + i).parents(".row").removeClass('bg-success');
+            $('#' + i).parents(".row").removeClass('bg-danger');
+            $('#' + i).parents(".row").addClass('bg-dark');
+        } else if (timeChecker === taskTime) {
+            $('#' + i).parents(".row").removeClass('bg-dark');
+            $('#' + i).parents(".row").removeClass('bg-success');
+            $('#' + i).parents(".row").addClass('bg-danger');
+        } else {
+            $('#' + i).parents(".row").removeClass('bg-danger');
+            $('#' + i).parents(".row").removeClass('.bg-dark');
+            $('#' + i).parents(".row").addClass('bg-success');
+        }
     }
 
+}, 1000);
 
+var loadTasks = function() {
+    tasks = JSON.parse(localStorage.getItem("work scheduler"));
+    if(!tasks) {
+        tasks = {
+            0: "Click to add task",
+            1: "Click to add task",
+            2: "Click to add task",
+            3: "Click to add task",
+            4: "Click to add task",
+            5: "Click to add task",
+            6: "Click to add task",
+            7: "Click to add task",
+            8: "Click to add task"
+        }
+    } 
+    for (var i = 0; i < 9; i++) {
+        var savedText = tasks[i]
+        $("div").find("#" + [i]).siblings("div").children("p").text(savedText);
+    }
 }
 
-
-
-
 $(".btn-primary").on("click", function() {
-    debugger
     var id = $(this).attr('id');
     var text = $(this).siblings("div").children("p").text();
-
+    
     console.log(text)
     tasks[id] = text;
     localStorage.setItem("work scheduler", JSON.stringify(tasks));
